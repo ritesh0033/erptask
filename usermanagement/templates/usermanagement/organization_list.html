@@ -1,0 +1,32 @@
+{% extends 'home/base.html' %}
+{% block title %}Organizations{% endblock %}
+{% block content %}
+<h2>Organizations</h2>
+<a href="{% url 'organization_create' %}" class="btn btn-primary mb-3">➕ Add Organization</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for organization in organizations %}
+        <tr>
+            <td>{{ organization.name }}</td>
+            <td>{{ organization.code }}</td>
+            <td>
+                <a href="{% url 'organization_edit' organization.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'organization_delete' organization.pk %}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No organizations found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

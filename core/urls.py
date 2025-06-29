@@ -20,7 +20,7 @@ from rest_framework import permissions
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="Inventory Management Api",
+      title="Erpgit  Management Api",
       default_version='v1',
       description="THis project is used for project management",
       terms_of_service="https://www.google.com/policies/terms/",
@@ -44,6 +44,10 @@ urlpatterns = [
     path('product/api',include('product.api.urls')),
     path('usermanagement/api',include('usermanagement.api.urls')),
 
+    path('home/', include('home.urls')),
+    path('product/', include('product.urls')),
+    path('inventory/', include('inventory.urls')),
+   path('usermanagement/', include('usermanagement.urls')),  
 
     path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),

@@ -50,6 +50,7 @@ PROJECT_APPS = [
     'product',
     'usermanagement',
     'inventory',
+    'home',
 
 ] 
 

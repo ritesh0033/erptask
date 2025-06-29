@@ -1,0 +1,44 @@
+{% extends 'home/base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Welcome {{ request.user.username }}</h2>
+            <p>This is your ERP dashboard.</p>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+                <div class="col">
+                    <div class="card h-100 border-primary">
+                        <div class="card-body">
+                            <h5 class="card-title">Products</h5>
+                            <p class="card-text">Manage product list and UoMs</p>
+                            <a href="/products/" class="btn btn-primary btn-sm">Go to Product</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 border-success">
+                        <div class="card-body">
+                            <h5 class="card-title">Inventory</h5>
+                            <p class="card-text">View warehouses and stock data</p>
+                            <a href="/warehouses/" class="btn btn-success btn-sm">Go to Inventory</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 border-warning">
+                        <div class="card-body">
+                            <h5 class="card-title">User Management</h5>
+                            <p class="card-text">Organizations and staff</p>
+                            <a href="/organizations/" class="btn btn-warning btn-sm">Manage Users</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

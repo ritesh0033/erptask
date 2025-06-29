@@ -1,0 +1,12 @@
+{% extends 'home/base.html' %}
+{% block title %}Organization Form{% endblock %}
+{% block content %}
+<h2>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Organization</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="{% url 'organization_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

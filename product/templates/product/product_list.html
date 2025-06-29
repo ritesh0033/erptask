@@ -1,0 +1,45 @@
+{% extends 'home/base.html' %}
+{% block title %}Product List{% endblock %}
+
+{% block content %}
+<h2>Product List</h2>
+<a href="{% url 'product_create' %}" class="button">Add New Product</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Base UoM</th>
+            <th>Costing Method</th>
+            <th>Tracking Method</th>
+            <th>Safety Stock</th>
+            <th>Reorder Qty</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.product_code }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.base_uom.code }}</td>
+            <td>{{ product.get_costing_method_display }}</td>
+            <td>{{ product.get_tracking_method_display }}</td>
+            <td>{{ product.safety_stock }}</td>
+            <td>{{ product.reorder_qty }}</td>
+            <td>{{ product.is_active|yesno:"Yes,No" }}</td>
+            <td>
+                <a href="{% url 'product_update' product.pk %}">Edit</a> |
+                <a href="{% url 'product_delete' product.pk %}">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="9">No products available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
